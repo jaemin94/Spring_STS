@@ -1,0 +1,4 @@
+show databases;
+use bookdb;
+show tables;
+select * from tbl_book;

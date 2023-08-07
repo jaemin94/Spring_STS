@@ -1,0 +1,68 @@
+01 기본도구 설치
+	- 구글에서 STS 다운로드 검색
+	- STS 3 다운
+	- window preference 들어가서 js,jsp,json,css 파일 엔코딩 설정
+	- help -> new software 들어가서 emmet + tern 다운
+		- emmet : https://soda-dev.tistory.com/9
+		- tune	: https://choitaetae.tistory.com/84
+
+
+02 기본 STS 환경
+	- new -> spring legacy project -> configure templates
+		-> default 빼고 지우기 -> 만들기
+	- pom.xml 에서 jdk 버전 설정 및 스프링프레임워크 버전 확인
+	- 플러그인 부분에서 메이븐 컴파일 버전 3.5.1로 변경
+	- 메이븐 컴파일 버전 및에 소스 타겟 에서 ${java-version}으로 변경
+	- dependency 안에 xerces 코드 작성 하며 Workspace 한글경로 포함문제 해결
+	- web.xml 에 한글 변환 필터 적용
+		- <!-- 한글 변환 필터 시작 -->
+		<filter>
+			<filter-name>encodingFilter</filter-name>
+			<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+			<init-param>
+				<param-name>encoding</param-name>
+				<param-value>UTF-8</param-value>
+			</init-param>
+			<init-param>
+				<param-name>forceEncoding</param-name>
+				<param-value>true</param-value>
+			</init-param>
+		</filter>
+		
+		<filter-mapping>
+			<filter-name>encodingFilter</filter-name>
+			<url-pattern>/*</url-pattern>
+		</filter-mapping>
+		<!-- 한글 변환 필터 끝 -->
+
+03 lombok 라이브러리 받기
+	- 프로젝트 우클릭 -> maven -> update project -> 다시 우클릭
+	  -> run as maven install 
+	  -> build success 가 뜨면 maven dependencies 라이브러리에
+	  -> lombok.jar 파일 확인후 우클릭 run as java application
+	  -> lombok 설치
+	  
+04 Spring core 
+	- IoC	: 제어역전 Context 생성 Bean을 생성관리는 프레임워크
+	
+	- DI	: 의존주입(가지고와서 사용) @autowired을 사용해서 Context의 Bean의 주소를 받아서 사용
+	  
+	1) @Component 를 특정 클래스에 부여(@Service, @Controller, @repository)
+	root-context.xml or servlet-context.xml 에
+	<context:component-scan base-package="com.test.app.domain.dto" />
+	
+	2) @AutoWired로 Bean 연결
+	  
+05 @Bean 만들기(@Configuration 애노테이션으로 설정 파일 을 만든다)
+	1) xml 에 직접 Bean 주입
+		<!-- 자체적으로 빈을 사용하는 방법 -->
+		<bean id="memoDto2" class="com.test.app.domain.dto.MemoDto">
+			<constructor-arg name="id" value="123"  />
+			<constructor-arg name="text" value="HAHAHA" />
+			<constructor-arg name="writer" value="HAHAHA" />
+		</bean>
+	2) @Controller , @component 애노테이션 -> root-context.xml 에서 scan
+	3) @Bean 애노테이션으로 Bean 주입(Bean에 이름을 따로 부여하지않으면 함수명으로 beanGraph에 표시된다)
+	
+		
+	  

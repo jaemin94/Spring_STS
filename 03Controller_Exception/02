@@ -1,0 +1,63 @@
+ 01 pom.xml 설정
+ 	<!-- Hibernate Validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.7.Final</version>
+		</dependency>
+<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<dependency>
+    		<groupId>javax.validation</groupId>
+    		<artifactId>validation-api</artifactId>
+    		<version>2.0.1.Final</version>
+		</dependency>
+		
+ 02 바인딩 처리 이후에 처리 되는 애노테이션
+ 		- @Min(value = 10 , message =?)	// 최소값 설정
+ 		- @Max(value=1000,message="최대 숫자는 1000 이하 이어야합니다.")	// 최대값 설정
+ 		- @Size(min= max=) // 최소길이~최대길이 설정
+ 		- @NotBlank(message="text를 입력하세요.")	// 공백시 오류
+ 		- @Email(message="유효한 이메일 주소를 입력하세요")	// 이메일주소 데이터검증
+ 		- @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")	// 날짜 적는 양식 설정
+ 		- @Future(message="현재 날짜보다 이후 날짜로 선택하셔야 됩니다.")	// 이전 날짜를 선택시 에러 발생
+ 	
+ 03 MemoController 	
+ 	- parameter 앞에  @Valid 붙여줌으로써 유효성 검사를 한다는 설정
+ 	- BindingResult bindingResult로 결과 확인
+ 	
+ 04 View로 메시지 확인
+ 
+ 05 WebDataBinder 등록하기
+ 	- @InitBinder 애노테이션으로 설정
+ 	- CustomEdiot(클래스명, 위치, 새로만든 에디터 클래스명) 또는 (클래스명, 해당 객체 생성)
+ 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 01 Lombok @Builder
+ 	- 객체를 생성할때 원하는 정보만 입력 가능
+ 	
+ 02 Parameter 받기
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ [참고]
