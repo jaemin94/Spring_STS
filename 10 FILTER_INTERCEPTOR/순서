@@ -1,0 +1,55 @@
+01 pom.xml
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aop</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.9.19</version>
+		    <scope>runtime</scope>
+		</dependency>
+
+02 root-context.xml
+- namespace  aop 체크
+	<aop:aspectj-autoproxy />
+	<context:component-scan base-package="com.test.aop" />
+
+03 servlet-context.xml
+<context:component-scan base-package="com.test.controller" />
+<context:component-scan base-package="com.test.service" />
+
+04 com.test.controller 기본 
+- com.test.controller.SimpleController 설정
+	
+- com.test.controller.SimpleService 설정
+
+- com.test.aop 설정
+
+05
+
+[주의]
+Controller에 Aop 설정 x
+Service 나 Database 에서 처리 
+
+
+Service: 비즈니스 로직을 처리하는 계층입니다. 데이터의 가공, 트랜잭션 관리, 외부 API와의 연동 등을 수행합니다. Service 계층은 AOP를 적용하기에 적합한 대상입니다. 예를 들어, 성능 측정, 트랜잭션 관리, 로깅, 예외 처리 등과 같은 공통 관심사를 AOP를 통해 한 곳에서 처리할 수 있습니다.
+Repository: 데이터베이스나 다른 영속성 매체와의 상호작용을 담당하는 계층입니다. 데이터의 CRUD(Create, Read, Update, Delete) 작업을 처리하며, 주로 데이터베이스와의 통신을 담당합니다. Repository에서도 AOP를 적용할 수 있으며, 예를 들어 데이터 액세스 로그, 캐싱 등을 AOP를 통해 처리할 수 있습니다.
+AOP(Aspect-Oriented Programming)는 다양한 용도로 활용될 수 있으며, 주로 다음과 같은 용도로 사용됩니다:
+로깅(Logging): 메서드 호출 시간, 파라미터, 반환값 등을 로깅하여 애플리케이션의 동작을 추적하고 디버깅에 도움을 줍니다.
+트랜잭션 관리(Transaction Management): 데이터베이스와 같은 영속성 매체를 사용할 때, 트랜잭션의 시작과 종료, 롤백 등을 자동으로 처리하여 데이터 일관성과 안정성을 보장합니다.
+보안(Security): 접근 제어, 권한 검사 등 보안과 관련된 기능을 Aspect로 분리하여 모듈화하고, 여러 클래스나 메서드에 공통으로 적용할 수 있습니다.
+캐싱(Caching): 비용이 높은 연산이나 데이터베이스 액세스 결과를 캐싱하여 성능을 향상시킵니다.
+에러 처리(Exception Handling): 메서드 호출 중 예외 발생 시 특정한 동작을 수행하거나, 에러 로그를 기록하는 등의 작업을 자동화할 수 있습니다.
+성능 측정(Performance Monitoring): 메서드의 실행 시간을 측정하여 성능 문제를 파악하고 최적화할 수 있습니다.
+국제화(i18n)와 지역화(l10n): 다국어 지원을 위한 메시지 처리를 Aspect로 추상화하여 재사용합니다.
+콘텍스트 관리(Context Management): 세션, 사용자 정보 등과 같은 컨텍스트 정보를 자동으로 처리하고 전달합니다.
+프로파일링(Profiling): 애플리케이션의 실행 시간을 분석하고 성능 향상을 위한 통계 정보를 수집합니다.
+감사 로깅(Audit Logging): 특정한 동작에 대한 감사 로그를 생성하여 시스템의 보안을 강화하고 추적성을 확보합니다.
+
+

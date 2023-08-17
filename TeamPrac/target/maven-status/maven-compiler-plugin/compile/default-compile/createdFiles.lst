@@ -1,0 +1,9 @@
+com\test\app\domain\mapper\MemberMapper.class
+com\test\app\controller\MemberController.class
+com\test\app\config\WebMvcConfig.class
+com\test\app\config\MyBatisConfig.class
+com\test\app\config\DataSourceConfig.class
+com\test\app\domain\dto\MemberDto.class
+com\test\app\HomeController.class
+com\test\app\config\SecurityConfig.class
+com\test\app\domain\service\MemberService.class
