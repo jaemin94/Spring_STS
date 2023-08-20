@@ -43,7 +43,7 @@
 					    }
 					 
 						search_btn_el.addEventListener("click",function(){
-							const projectPath = '/TeamProject2';
+							const projectPath = '/app';
 							const ServerPort = '8080';
 							console.log("search_btn_el click..",projectPath);
 							
@@ -53,11 +53,11 @@
 					    	
 					    	  // 입력한 주문 ID 값을 가져옴
   							const orderIdInput = document.getElementById("odrtype");
-  							const orderId = orderIdInput.value.trim(); // 입력값 앞뒤 공백 제거
-  							console.log(orderId);
+  							const order_id = orderIdInput.value.trim(); // 입력값 앞뒤 공백 제거
+  							console.log(order_id);
 					    	
-					    	const url = "http://localhost:" + ServerPort + projectPath + "/order/search.do" +
-              							(orderId !== "" ? "?orderId=" + orderId : ""); // orderId가 비어있지 않으면 쿼리 파라미터에 추가
+					    	const url = "http://localhost:" + ServerPort + projectPath + "/order/AdminOrder" +
+              							(order_id !== "" ? "?order_id=" + order_id : ""); // orderId가 비어있지 않으면 쿼리 파라미터에 추가
 
 							axios.get(url)
 							.then(response=>{alert("Success!",response.data);

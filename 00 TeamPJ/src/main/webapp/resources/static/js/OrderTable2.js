@@ -9,7 +9,7 @@ function addCheckboxEventListeners() {
       } else {
         orderRow.classList.remove("selected");
       }
-         // 체크박스 클릭 시 선택된 주문 ID 출력 (테스트용)
+      // 체크박스 클릭 시 선택된 주문 ID 출력 (테스트용)
       const selectedOrderIds = getSelectedOrderIds();
       console.log("Selected Order IDs:", selectedOrderIds);
     });
@@ -18,24 +18,19 @@ function addCheckboxEventListeners() {
 
 // 주문 정보를 서버로부터 가져와서 테이블에 표시하는 코드
 function fetchAndDisplayOrderData(order_id) {
-
- let url = '/app/order/ShoppingBasket_Admin2';
+  let url = '/app/order/ShoppingBasket_Admin2';
   if (order_id) {
     // 주문번호가 입력되어 있다면 해당 주문번호에 해당하는 주문 정보만 가져오도록 URL 수정
     url += '?order_id=' + encodeURIComponent(order_id);
   }
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('주문 정보를 가져오는데 실패했습니다.');
-      }
-      return response.json();
-    })
-    .then((orderList) => {
+
+  axios.get(url)
+    .then(response => {
+      const orderList = response.data;
       displayOrderList(orderList);
       addCheckboxEventListeners(); // 주문 정보를 테이블에 표시한 후 이벤트 리스너 등록
     })
-    .catch((error) => {
+    .catch(error => {
       console.error(error);
       displayOrderList([]); // 에러 발생 시 빈 배열로 테이블에 표시
       addCheckboxEventListeners(); // 에러 발생 시 이벤트 리스너 등록
@@ -44,13 +39,12 @@ function fetchAndDisplayOrderData(order_id) {
 
 // 주문 정보를 테이블에 표시하는 코드
 function displayOrderList(orderList) {
-  var tableBody = document.getElementById('table-body');
-  
-	
-	const dataArray = Array.isArray(orderList) ? orderList : [orderList];
+const tableBody = document.querySelector('.table-body');
+
+  const dataArray = Array.isArray(orderList) ? orderList : [orderList];
 
   dataArray.forEach((order) => {
-    var row = document.createElement('tr');
+    const row = document.createElement('tr');
 
     // 주문 정보를 각 열에 추가
     row.innerHTML = `
@@ -71,6 +65,7 @@ function displayOrderList(orderList) {
     tableBody.appendChild(row);
   });
   addRemoveButtonEventListeners();
+}
   
 /*  // x 버튼을 클릭하면 해당 주문 정보 삭제 이벤트 등록
   const removeButtons = document.querySelectorAll(".table-remove");
@@ -80,7 +75,7 @@ function displayOrderList(orderList) {
       orderRow.remove(); // 주문 정보 행 삭제
     });
   });*/
-}
+
 
 // 주문 정보를 JSON 형태로 변환하여 서버로 전송하는 코드
 /*function sendData() {

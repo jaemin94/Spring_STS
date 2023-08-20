@@ -148,7 +148,7 @@ var userRole = '<%= session.getAttribute("role") %>';
 		        <th><span class="table-add glyphicon glyphicon-plus" id="plusbt"></span></th>
 		      </tr>
 		    </thead>
-		    <tbody id="order-list-body">
+		    <tbody class="table-body">
 
 		    </tbody>
 		  </table>
@@ -187,7 +187,7 @@ var userRole = '<%= session.getAttribute("role") %>';
 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script>
 
 	
-	<script defer src="${pageContext.request.contextPath}/resources/static/js/OrderTable.js"type="text/javascript"></script>
+	<script defer src="${pageContext.request.contextPath}/resources/static/js/OrderTable2.js"type="text/javascript"></script>
 	
 	
 </body>

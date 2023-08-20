@@ -23,8 +23,12 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			
 			System.out.println(role);
 			String role_str=role.getAuthority();
+			String member_id = authentication.getName();
+			System.out.println("member_id : " + member_id);
 			System.out.println(role_str);
 			request.getSession().setAttribute("role", role_str);
+			request.getSession().setAttribute("username", member_id);
+			
 			
 			try {
 			if(role_str.equals("ROLE_User"))
@@ -35,11 +39,11 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			}else if(role_str.equals("ROLE_Member"))
 			{
 				System.out.println("Member 페이지로 이동!");
-				response.sendRedirect(request.getContextPath()+"/member");
+				response.sendRedirect(request.getContextPath()+"/Main");
 			}else if(role_str.equals("ROLE_Admin"))
 			{
 				System.out.println("Admin 페이지로 이동!");
-				response.sendRedirect(request.getContextPath()+"/admin");
+				response.sendRedirect(request.getContextPath()+"/Main");
 			}
 			
 			} catch (IOException e) {

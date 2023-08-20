@@ -18,6 +18,7 @@ public class CustomLogoutHandler implements LogoutHandler{
 		{
 			session.invalidate();
 		}
+		System.out.println("session : " + session);
 		
 	}
 

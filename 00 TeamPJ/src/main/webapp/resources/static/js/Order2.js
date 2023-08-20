@@ -32,7 +32,7 @@
 					    }
 					 
 						search_btn_el.addEventListener("click",function(){
-							const projectPath = '/TeamProject2';
+							const projectPath = '/app';
 							const ServerPort = '8080';
 							console.log("search_btn_el click..",projectPath);
 							
@@ -42,12 +42,12 @@
 					    	
 					    	  // 입력한 주문 ID 값을 가져옴
   							const orderIdInput = document.getElementById("odrtype");
-  							const orderId = orderIdInput.value.trim(); // 입력값 앞뒤 공백 제거
-  							console.log(orderId);
-  							console.log(memberId);
+  							const order_id = orderIdInput.value.trim(); // 입력값 앞뒤 공백 제거
+  							console.log(order_id);
+  							console.log(username);
 					    	
-					    	const url = "http://localhost:" + ServerPort + projectPath + "/order/search2.do" +
-              							(orderId !== "" ? "?orderId=" + orderId : (memberId !== "" ? "?memberId=" + memberId : "")); // orderId 또는 memberId 중 하나만 쿼리 파라미터에 추가
+					    	const url = "http://localhost:" + ServerPort + projectPath + "/order/MemberOrder" +
+              							(order_id !== "" ? "?order_id=" + order_id : (username !== "" ? "?username=" + username : "")); // orderId 또는 memberId 중 하나만 쿼리 파라미터에 추가
 							axios.get(url)
 							.then(response=>{alert("Success!",response.data);
 								console.log(response.data);

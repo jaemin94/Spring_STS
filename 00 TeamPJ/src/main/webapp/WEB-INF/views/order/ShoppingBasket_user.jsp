@@ -46,6 +46,7 @@
 </head>
 <script>
 var userRole = '<%= session.getAttribute("role") %>';
+var username = '<%= session.getAttribute("username") %>';
 // userRole 변수를 다른 JavaScript 코드에서 사용할 수 있습니다.
 </script>
 

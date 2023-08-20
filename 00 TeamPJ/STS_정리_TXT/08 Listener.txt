@@ -1,0 +1,17 @@
+01 Listener
+	- 이벤트를 감지하고 처리하는 부분
+	- Listener 종류
+		- Application Event
+			- Spring 애플리케이션에서 발생하는 여러 유형의 이벤트로, 예를 들어 컨텍스트 초기화, 빈 생성, 
+			  HTTP 요청 등이 있습니다. 이러한 이벤트는 Spring 컨테이너 내에서 발생하며, 
+			  다른 빈들 간에 통신하거나 특정 상황에 대한 반응을 구현하는 데 사용됩니다.
+		- ApplicationListener
+			- Spring 프레임워크는 이벤트를 감지하고 처리하기 위해 ApplicationListener 인터페이스를 제공합니다.
+			  인터페이스를 구현하여 원하는 이벤트를 수신하고 처리하는 리스너 클래스를 정의할 수 있습니다.
+	- 활용 방법
+		- 이벤트 정의 및 생성
+			- 이벤트 객체는 일반적으로 Spring의 ApplicationEvent 클래스를 상속받아 구현
+		- Listener 클래스 작성
+			- 클래스는 ApplicationListener 인터페이스를 구현하며, 정의한 이벤트 타입에 대해 원하는 동작을 구현
+		- 리스너 등록
+			- 컨텍스트에 Listener를 등록하여 이벤트가 발생했을 때 해당 리스너가 작동하도록 설정

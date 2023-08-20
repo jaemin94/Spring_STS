@@ -1,0 +1,20 @@
+01 애노테이션 종류
+	- @Component		: 개발자가 정의한 클래스를 Bean으로 등록하는 애노테이션
+	- @Bean			: 개발자가 제어 불가능한 외부 라이브러리를 Bean으로 만들때
+	- @Service		: 클래스가 서비스 역활을 한다고 명시하기 위해 사용
+	- @Controller		: 클래스가 컨트롤러 역활을 한다고 명시하기 위해 사용
+	- @RequestMapping	: Controller 객체안 메서드,클래스에 적용을 시켜 요청이 들어온 URI를 보고 해당 메서드를 실행	
+	- @RequestBody(요청)	: 메서드의 리턴값이 View 출력이 아닌 HTTP Response Body에 직접 쓰여지고 리턴타입을 JSON,XML 형식으로 반환
+	- @ResponseBody(응답)	: 메서드의 리턴값이 View 출력이 아닌 HTTP Response Body에 직접 쓰여지고 리턴타입을 JSON,XML 형식으로 반환
+	- @GetMapping		: @RequestMapping(Method=RequestMethod.GET) 과 같은 역할
+	- @PostMapping		: @RequestMapping(Method=RequestMethod.POST) 과 같은 역할
+	- @Autowired		: <타입> 에따라 Bean을 알아서 주입해준다
+
+02 바인딩 처리 이후에 실행되는 애노테이션(Validation, WebDataBinding)
+	- @Min			: 작성되야 하는 최솟값 설정(숫자)
+	- @Max			: 작성되야 하는 최댓값 설정(숫자)
+	- @Size			: 최소길이 ~ 최대 길이 설정
+	- @NotBlank		: 공백 입력시 오류
+	- @Email		: 이메일주소 데이터 검증
+	- @DateTimeFormat	: 날짜 적는 양식 설정
+	- @Future		: 이전 날짜를 선택시 오류

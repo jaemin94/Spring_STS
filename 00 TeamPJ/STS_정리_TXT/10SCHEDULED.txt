@@ -1,0 +1,11 @@
+01 SCHEDULED
+	- 일정한 시간 간격으로, 혹은 특정 일정에 코드가 실행되도록 설정
+	- 기능
+		- fixedDelay		: 이전 작업이 종료된 후 설정시간(milliseconds) 이후에 다시 시작
+		- fixedDelayString	: fixedDelay와 동일 하고 설정시간(milliseconds)을 문자로 입력하는 경우 사용
+		- fixedRate		: 고정 시간 간격으로 시작
+		- fixedRateString	: fixedRate와 동일 하고 설정시간(milliseconds)을 문자로 입력
+		- initialDelay		: 설정된 initialDelay 시간 후부터 fixedDelay 시간 간격으로 실행
+		- initialDelayString	: initialDelay와 동일 하고 설정시간(milliseconds)을 문자로 입력
+		- cron(cron="******")	: 첫번째 부터 초(0-59) 분(0-59) 시간(0-23) 일(1-31) 월(1-12) 요일(0-7)
+		- zone(zone=Asia/Seoul)	: 미설정시 Local 시간대 사용

@@ -12,10 +12,10 @@ public class LoginController {
 
 
 	@GetMapping("/member/auth/Login")
-	public String myLogin()
+	public void myLogin()
 	{
 		log.info("GET /member/auth/Login");
-		return "redirect:/custom-login";
+		
 	}
 
 	@GetMapping("/user")
