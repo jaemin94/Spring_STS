@@ -1,0 +1,39 @@
+01 DataSource
+	- DB와 관계된 커넥션 정보를 담고있으며 빈으로 등록하여 인자로 넘겨줌 → 이 과정을 통해 Spring은 DataSource로 DB와의 연결을 획득
+		- DB 서버와의 연결을 해준다
+		- DB Connetion pooling기능
+	- 종류 : JDBC Driver vendor(MySQL, Oracle)별로 여러가지가 존재
+02 DataSource를 설정하고 빈에등록, 주입하는 방법
+	- DB와의 연결을 위해 **DB서버 정보(Property)**를 설정 (지금은 xml형식보다는 config로 만들어 활용)
+	- 설정한 Config을 통해 DataSource를 빈으로 등록(@Bean)
+		- Spring JDBC를 이용하려면 DB 커넥션을 가져오는 DataSource를 빈으로 먼저 등록
+	- 생성된 DataSource빈을 Spring JDBC에 주입(@Autowired)
+03 DB Connection Pooling
+	- 자바 프로그램에서 데이터베이스 연결은 오래걸림
+	- 일정량의 Connection객체를 미리 만들어 저장해두었다가 요청시 꺼내쓸수 있다
+	- 속도와 퍼포먼스가 좋아짐
+	- 커넥션풀을 관리하고, 커넥션객체를 풀에서 꺼냈다 반납하는 이러한 과정을 DataSource가 처리
+02 SQL Mapper 와 ORM
+	- ORM은 데이터베이스 객체를 자바 객체로 매핑함으로써 객체간의 관계를 바탕으로 SQL을 자동으로 생성
+	- SQL Mapper는 SQL을 명시
+05 JDBC
+	- DB에 접근할수 있도록 Java에서 제공하는 API (Java Database Connectivity)
+		- 데이터베이스에서 자료를 쿼리하거나 업데이트하는 방법을 제공
+		- JDBC를 이용하면 데이터베이스에 비 종속적인 DB연동로직을 구현할 수 있다
+	- Spring JDBC가 하는일
+		- Connection 열기와 닫기
+		- Statement 준비와 닫기
+		- Statement 실행
+		- ResultSet Loop처리
+		- Exception 처리와 반환
+		- Transaction 처리
+	- JDBC Template
+		- Spring JDBC접근 방법중 하나로, 내부적으로 Plain JDBC API를 사용하지만 위와같은 문제점을 해결한 Spring에서 제공하는 클래스
+		- 기능
+			- 실행 : Insert나 Update같이 DB의 데이터에 변경이 일어나는 쿼리를 수행하는 작업
+			- 조회 : Select를 이용해 데이터를 조회하는 작업
+			- 배치 : 여러 개의 쿼리를 한 번에 수행해야 하는 작업
+			- jdbc template을 사용하면 커넥션 연결/종료와같은 세부적인 작업을 개발자가 직접 처리하지 않아도 된다
+06 Mybatis
+	- 개발자가 지정한 SQL, 저장 프로시저 그리고 몇가지 고급 매핑을 지원하는 SQL Mapper	
+	- JDBC로 처리하는 상당 부분의 코드와 파라미터 설정 및 결과 매핑을 대신 처리

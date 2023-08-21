@@ -1,0 +1,222 @@
+01 기본 도구 설치
+	- 구글에서 STS 다운로드 검색 -> Spring Tools 4 for Visual Studio codes 접속
+	   -> 맨 밑으로 스크롤 다운 검은색 배너의 Looking for Spring Tool Suite 3 클릭
+	  -> Latest STS3 Downloads 에서 제일 위에꺼 다운
+	
+	- STS.zip 파일 클릭 sts-3.9.18.Release 만 c 드라이브로 드래그
+	- STS 실행
+	- 상단 window -> preference 들어가서 files 검색 후 json, css, html, jsp 인코딩 (UTF-8) 로 설정
+	- help -> new software 들어가서 emmet , tern 다운
+		- emmet	: https://soda-dev.tistory.com/9
+		- tune	: https://choitaetae.tistory.com/84
+
+02 기본 STS 환경 설정
+	- new -> spring legacy project -> configure templates -> defalut만 빼고 지우기
+	- pom.xml 설정
+		- JDK 버전 설정 및 스프링프레임워크 버전 확인
+		- plugin 부분에서 maven plugin compile 버전 3.5.1로 변경
+		- maven plugin compile 버전 및에 소스 타겟에서 ${java-version}으로 변경
+		- dependency 안에 xerces 코드 작성하며 Workspace 한글 경로 포함문제 해결
+		- 추가해야할 dependency들
+			- Workspace 한글경로 포함문제 해결
+			<dependency>
+				<groupId>xerces</groupId>
+				<artifactId>xercesImpl</artifactId>
+				<version>2.12.2</version>
+			</dependency>
+
+			- LOMBOK 애노태이션
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.18.28</version>
+				<scope>provided</scope>
+			</dependency>
+
+			- mysql Connector J (DB연결)
+		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+			<dependency>
+				<groupId>com.mysql</groupId>
+				<artifactId>mysql-connector-j</artifactId>
+				<version>8.1.0</version>
+			</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>5.0.7.RELEASE</version>
+			</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+			<dependency>
+				<groupId>com.zaxxer</groupId>
+				<artifactId>HikariCP</artifactId>
+				<version>5.0.1</version>
+			</dependency>
+
+			- Mybatis 설정
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>3.5.13</version>
+			</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>2.0.7</version>
+			</dependency>
+
+
+			- Spring - Tx 설정(Transaction 애노테이션)
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>5.0.7.RELEASE</version>
+			</dependency>
+
+			- RESTFUL (RESTFUL API 설정)
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.15.2</version>
+			</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.dataformat</groupId>
+				<artifactId>jackson-dataformat-xml</artifactId>
+				<version>2.15.2</version>
+			</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>2.10.1</version>
+			</dependency>
+
+
+			- FILE UP/DOWNLAOD 설정
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>1.4</version>
+			</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.11.0</version>
+			</dependency>
+
+
+			- AOP 설정(관점을 기준으로 모듈화시키는설정)
+			<!-- AspectJ -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>${org.aspectj-version}</version>
+			</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>5.0.7.RELEASE</version>
+			</dependency>
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.9.19</version>
+				<scope>runtime</scope>
+			</dependency>
+
+
+			- SERVLET FILTER ANNOTATION 
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>4.0.1</version>
+				<scope>provided</scope>
+			</dependency>
+
+			- INTERCEPTOR (컨트롤러에 들어오는 요청과응답을 가로채는 설정(권한))
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>5.0.7.RELEASE</version>
+			</dependency>
+
+			- SECURITY 설정(보안)
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-core</artifactId>
+				<version>5.0.7.RELEASE</version>
+			</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>5.0.7.RELEASE</version>
+			</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>5.0.7.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-taglibs</artifactId>
+				<version>5.0.7.RELEASE</version>
+			</dependency>
+
+	- lombok 라이브러리 받기(pom.xml 에서 lombok 을 추가했을시)
+		- 프로젝트 우클릭 -> maven -> update project -> 다시 우클릭
+		  -> run as maven install -> build success뜨면 성공
+		- 프로젝트 파일안에 maven dependencies 라이브러리에 lombok.jar 우클릭 run as java application
+		  -> lombok 설치 완료
+
+	- web.xml 에 추가해야 하는 필터
+		- 한글문자 변환필터
+			<filter>
+				<filter-name>encodingFilter</filter-name>
+				<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+				<init-param>
+					<param-name>encoding</param-name>
+					<param-value>UTF-8</param-value>
+				</init-param>
+				<init-param>
+					<param-name>forceEncoding</param-name>
+					<param-value>true</param-value>
+				</init-param>
+			</filter>
+		
+			<filter-mapping>
+				<filter-name>encodingFilter</filter-name>
+				<url-pattern>/*</url-pattern>
+			</filter-mapping>
+	
+		- SECURITY FILTER 
+			<filter>
+        			<filter-name>springSecurityFilterChain</filter-name>
+        			<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    			</filter>
+    
+    			<filter-mapping>
+       	 			<filter-name>springSecurityFilterChain</filter-name>
+        			<url-pattern>/*</url-pattern>
+   			 </filter-mapping> 	
+		
+ 
