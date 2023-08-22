@@ -1,0 +1,20 @@
+01 HandlerMapping
+	- 핸들러 매핑은 HTTP 요청 정보를 이용해서 컨트롤러를 찾아주는 기능을 수행
+	- HandlerMapping은 DispatcherServlet에 의해 초기화
+	- HandlerMapping은 항상 HandlerExecutionChain을 통해 실행
+	- HandlerExecutionChain은 AbstractHandlerMapping 클래스에 의해 생성
+	- 기본 HandlerMapping 구현체인 BeanNameUrlHandlerMapping은 AbstractUrlHandlerMapping을 상속
+	- 기본 HandlerMapping 구현체인 RequestMappingHandlerMapping은 AbstractHandlerMethodMapping을 상속
+
+02 HandlerMapping의 전략
+	- BeanNameUrlHandlerMapping		: 빈의 이름에 들어있는 URL을 HTTP 요청의 URL과 비교해서 일치하는 빈을 찾아준다
+	- ControllerBeanNameHandlerMapping	: 위에랑 비슷하지만 빈 이름을 URL 형태로 짓지 않아도 된다는 것이 차이점이다
+	- ControllerClassNameHandlerMapping	: 빈의 클래스 이름을 URL에 매핑해주는 매핑 클래스
+	- SimpleUrlHandlerMapping		: URL과 컨트롤러 매핑정보를 한곳에 모아놓을 수 있는 전략이다
+	- DefaultAnnotationHandlerMapping	: @RequestMapping 어노테이션을 이용해 매핑하는 전략이다
+03 HandlerMapping 우선순위
+	- 1. RequestMappingHandlerMapping
+	- 2. BeanNameUrlHandlerMapping
+	- 3. RouterFunctionMapping
+	- 4. WelcomPageHandlerMapping
+	- 5. SimpleUrlHandlerMapping
